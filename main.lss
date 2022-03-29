@@ -1,0 +1,63 @@
+
+main.o:     file format elf32-littlearm
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         00000088  00000000  00000000  00000034  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .data         00000000  00000000  00000000  000000bc  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  2 .bss          00000000  00000000  00000000  000000bc  2**0
+                  ALLOC
+  3 .ARM.attributes 00000014  00000000  00000000  000000bc  2**0
+                  CONTENTS, READONLY
+
+Disassembly of section .text:
+
+00000000 <ADR_saut_1>:
+   0:	2101      	movs	r1, #1
+   2:	2202      	movs	r2, #2
+	...
+
+00000010 <ADR_saut_2>:
+  10:	0069      	lsls	r1, r5, #1
+  12:	086d      	lsrs	r5, r5, #1
+  14:	1068      	asrs	r0, r5, #1
+	...
+
+00000020 <ADR_saut_3>:
+  20:	188b      	adds	r3, r1, r2
+  22:	1c4b      	adds	r3, r1, #1
+  24:	1a8c      	subs	r4, r1, r2
+  26:	1e4c      	subs	r4, r1, #1
+  28:	3301      	adds	r3, #1
+  2a:	3c01      	subs	r4, #1
+	...
+
+00000040 <ADR_saut_4>:
+  40:	4011      	ands	r1, r2
+  42:	4051      	eors	r1, r2
+  44:	4091      	lsls	r1, r2
+  46:	40d1      	lsrs	r1, r2
+  48:	4111      	asrs	r1, r2
+  4a:	41d1      	rors	r1, r2
+  4c:	4251      	negs	r1, r2
+  4e:	4311      	orrs	r1, r2
+  50:	43d1      	mvns	r1, r2
+	...
+
+00000060 <ADR_saut_5>:
+  60:	5519      	strb	r1, [r3, r4]
+  62:	5d19      	ldrb	r1, [r3, r4]
+  64:	5319      	strh	r1, [r3, r4]
+  66:	5b19      	ldrh	r1, [r3, r4]
+  68:	7019      	strb	r1, [r3, #0]
+  6a:	7819      	ldrb	r1, [r3, #0]
+  6c:	8019      	strh	r1, [r3, #0]
+  6e:	8819      	ldrh	r1, [r3, #0]
+	...
+
+00000080 <ADR_saut_6>:
+  80:	d0be      	beq.n	0 <ADR_saut_1>
+  82:	f7ff ffbd 	bl	0 <ADR_saut_1>
+  86:	e7bb      	b.n	0 <ADR_saut_1>
