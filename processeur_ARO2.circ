@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<project integrity="47c1925cae08762e71a34283cff5074152a90776" source="2.16.8.t" version="1.0">
+<project integrity="1acf8d923f1b7be46cdcb831a3add7bee53e869d" source="2.16.8.t" version="1.0">
   This file is intended to be loaded by Logisim-evolution (https://github.com/reds-heig/logisim-evolution).
 
   <lib desc="#Wiring" name="0">
@@ -1828,9 +1828,14 @@ end TCL_Generic;
       <a name="bit5" val="none"/>
       <a name="bit6" val="none"/>
     </comp>
-    <comp lib="8" loc="(80,911)" name="Text">
+    <comp lib="8" loc="(362,1451)" name="Text">
+      <a name="text" val="Permet d'interer à travers la memoire pour tester les controls_bus !"/>
+      <a name="font" val="SansSerif bolditalic 18"/>
+      <a name="valign" val="top"/>
+    </comp>
+    <comp lib="8" loc="(211,877)" name="Text">
       <a name="text" val="Temploraire"/>
-      <a name="font" val="SansSerif plain 22"/>
+      <a name="font" val="SansSerif bolditalic 26"/>
     </comp>
     <comp lib="7" loc="(4,50)" name="Text" trackercomp="true">
       <a name="text" val="Attention, votre version de Logisim"/>
