@@ -3,46 +3,106 @@ main.o:     file format elf32-littlearm
 
 Sections:
 Idx Name          Size      VMA       LMA       File off  Algn
-  0 .text         0000003a  00000000  00000000  00000034  2**1
-                  CONTENTS, ALLOC, LOAD, READONLY, CODE
-  1 .data         00000000  00000000  00000000  0000006e  2**0
+  0 .text         0000009a  00000000  00000000  00000034  2**1
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+  1 .data         00000000  00000000  00000000  000000ce  2**0
                   CONTENTS, ALLOC, LOAD, DATA
-  2 .bss          00000000  00000000  00000000  0000006e  2**0
+  2 .bss          00000000  00000000  00000000  000000ce  2**0
                   ALLOC
-  3 .ARM.attributes 00000014  00000000  00000000  0000006e  2**0
+  3 .ARM.attributes 00000014  00000000  00000000  000000ce  2**0
                   CONTENTS, READONLY
 
 Disassembly of section .text:
 
-00000000 <ADR_saut_1>:
-   0:	0051      	lsls	r1, r2, #1
-   2:	0851      	lsrs	r1, r2, #1
-   4:	1051      	asrs	r1, r2, #1
-   6:	188b      	adds	r3, r1, r2
-   8:	1c4b      	adds	r3, r1, #1
-   a:	1a8c      	subs	r4, r1, r2
-   c:	1e4c      	subs	r4, r1, #1
-   e:	2101      	movs	r1, #1
-  10:	3301      	adds	r3, #1
-  12:	3c01      	subs	r4, #1
-  14:	4011      	ands	r1, r2
-  16:	4051      	eors	r1, r2
-  18:	4091      	lsls	r1, r2
-  1a:	40d2      	lsrs	r2, r2
-  1c:	4110      	asrs	r0, r2
-  1e:	41d1      	rors	r1, r2
-  20:	4251      	negs	r1, r2
-  22:	4311      	orrs	r1, r2
-  24:	43d1      	mvns	r1, r2
-  26:	5519      	strb	r1, [r3, r4]
-  28:	5d19      	ldrb	r1, [r3, r4]
-  2a:	5319      	strh	r1, [r3, r4]
-  2c:	5b19      	ldrh	r1, [r3, r4]
-  2e:	7019      	strb	r1, [r3, #0]
-  30:	7819      	ldrb	r1, [r3, #0]
-  32:	8019      	strh	r1, [r3, #0]
-  34:	8819      	ldrh	r1, [r3, #0]
-  36:	d0ff      	beq.n	38 <ADR_saut_2>
+00000000 <debut>:
+   0:	f000 f802 	bl	8 <f1>
+   4:	3d02      	subs	r5, #2
+   6:	e047      	b.n	98 <fin>
 
-00000038 <ADR_saut_2>:
-  38:	e7e2      	b.n	0 <ADR_saut_1>
+00000008 <f1>:
+   8:	802e      	strh	r6, [r5, #0]
+   a:	200a      	movs	r0, #10
+   c:	2114      	movs	r1, #20
+   e:	221e      	movs	r2, #30
+  10:	2328      	movs	r3, #40	; 0x28
+  12:	f000 f803 	bl	1c <f2>
+  16:	3d02      	subs	r5, #2
+  18:	882e      	ldrh	r6, [r5, #0]
+  1a:	1c37      	adds	r7, r6, #0
+
+0000001c <f2>:
+  1c:	3502      	adds	r5, #2
+  1e:	802e      	strh	r6, [r5, #0]
+  20:	1a5c      	subs	r4, r3, r1
+  22:	400c      	ands	r4, r1
+  24:	d0fe      	beq.n	0 <equal>
+  26:	f000 f804 	bl	32 <f3>
+  2a:	3d02      	subs	r5, #2
+  2c:	882e      	ldrh	r6, [r5, #0]
+  2e:	1c37      	adds	r7, r6, #0
+
+00000030 <equalF2>:
+  30:	e7f4      	b.n	1c <f2>
+
+00000032 <f3>:
+  32:	3502      	adds	r5, #2
+  34:	802e      	strh	r6, [r5, #0]
+  36:	1800      	adds	r0, r0, r0
+  38:	f000 f804 	bl	44 <f4>
+  3c:	3d02      	subs	r5, #2
+  3e:	882e      	ldrh	r6, [r5, #0]
+  40:	1c37      	adds	r7, r6, #0
+
+00000042 <equalF3>:
+  42:	e7f6      	b.n	32 <f3>
+
+00000044 <f4>:
+  44:	3502      	adds	r5, #2
+  46:	802e      	strh	r6, [r5, #0]
+  48:	2418      	movs	r4, #24
+  4a:	40d4      	lsrs	r4, r2
+  4c:	f000 f803 	bl	56 <f5>
+  50:	3d02      	subs	r5, #2
+  52:	882e      	ldrh	r6, [r5, #0]
+  54:	1c37      	adds	r7, r6, #0
+
+00000056 <f5>:
+  56:	3502      	adds	r5, #2
+  58:	802e      	strh	r6, [r5, #0]
+  5a:	4321      	orrs	r1, r4
+  5c:	f000 f803 	bl	66 <f6>
+  60:	3d02      	subs	r5, #2
+  62:	882e      	ldrh	r6, [r5, #0]
+  64:	1c37      	adds	r7, r6, #0
+
+00000066 <f6>:
+  66:	3502      	adds	r5, #2
+  68:	802e      	strh	r6, [r5, #0]
+  6a:	4061      	eors	r1, r4
+  6c:	f000 f803 	bl	76 <f7>
+  70:	3d02      	subs	r5, #2
+  72:	882e      	ldrh	r6, [r5, #0]
+  74:	1c37      	adds	r7, r6, #0
+
+00000076 <f7>:
+  76:	3502      	adds	r5, #2
+  78:	802e      	strh	r6, [r5, #0]
+  7a:	43e1      	mvns	r1, r4
+  7c:	f000 f803 	bl	86 <f8>
+  80:	3d02      	subs	r5, #2
+  82:	882e      	ldrh	r6, [r5, #0]
+  84:	1c37      	adds	r7, r6, #0
+
+00000086 <f8>:
+  86:	3502      	adds	r5, #2
+  88:	802e      	strh	r6, [r5, #0]
+  8a:	2000      	movs	r0, #0
+  8c:	2100      	movs	r1, #0
+  8e:	2200      	movs	r2, #0
+  90:	2300      	movs	r3, #0
+  92:	3d02      	subs	r5, #2
+  94:	882e      	ldrh	r6, [r5, #0]
+  96:	1c37      	adds	r7, r6, #0
+
+00000098 <fin>:
+  98:	e7b2      	b.n	0 <debut>
