@@ -1,5 +1,6 @@
 init:
 mov r0, #0
+mov r5, #0
 mov r1, #128
 
 bl recursif
@@ -20,8 +21,8 @@ beq retour
 
 bl recursif
 
-.org 0x36
 retour:
 
+beq retour
 sub r5, #2
 ldrb r7, [r5]

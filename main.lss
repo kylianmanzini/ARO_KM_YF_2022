@@ -3,22 +3,25 @@ main.o:     file format elf32-littlearm
 
 Sections:
 Idx Name          Size      VMA       LMA       File off  Algn
-  0 .text         0000003a  00000000  00000000  00000034  2**1
+  0 .text         00000028  00000000  00000000  00000034  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
-  1 .data         00000000  00000000  00000000  0000006e  2**0
+  1 .data         00000000  00000000  00000000  0000005c  2**0
                   CONTENTS, ALLOC, LOAD, DATA
-  2 .bss          00000000  00000000  00000000  0000006e  2**0
+  2 .bss          00000000  00000000  00000000  0000005c  2**0
                   ALLOC
-  3 .ARM.attributes 00000014  00000000  00000000  0000006e  2**0
+  3 .ARM.attributes 00000014  00000000  00000000  0000005c  2**0
                   CONTENTS, READONLY
 
 Disassembly of section .text:
 
 00000000 <init>:
    0:	2000      	movs	r0, #0
-   2:	2180      	movs	r1, #128	; 0x80
-   4:	f000 f805 	bl	12 <recursif>
-   8:	e7fa      	b.n	0 <init>
+   2:	2500      	movs	r5, #0
+   4:	2180      	movs	r1, #128	; 0x80
+   6:	f000 f804 	bl	12 <recursif>
+   a:	e7f9      	b.n	0 <init>
+   c:	0000      	movs	r0, r0
+   e:	0000      	movs	r0, r0
 	...
 
 00000012 <recursif>:
@@ -27,10 +30,10 @@ Disassembly of section .text:
   16:	7041      	strb	r1, [r0, #1]
   18:	3002      	adds	r0, #2
   1a:	0849      	lsrs	r1, r1, #1
-  1c:	d00b      	beq.n	36 <retour>
+  1c:	d001      	beq.n	22 <retour>
   1e:	f7ff fff8 	bl	12 <recursif>
-	...
 
-00000036 <retour>:
-  36:	3d02      	subs	r5, #2
-  38:	782f      	ldrb	r7, [r5, #0]
+00000022 <retour>:
+  22:	d0fe      	beq.n	22 <retour>
+  24:	3d02      	subs	r5, #2
+  26:	782f      	ldrb	r7, [r5, #0]
