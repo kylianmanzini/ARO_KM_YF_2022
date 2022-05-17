@@ -3,71 +3,33 @@ main.o:     file format elf32-littlearm
 
 Sections:
 Idx Name          Size      VMA       LMA       File off  Algn
-  0 .text         000000ac  00000000  00000000  00000034  2**1
+  0 .text         0000001c  00000000  00000000  00000034  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
-  1 .data         00000000  00000000  00000000  000000e0  2**0
+  1 .data         00000000  00000000  00000000  00000050  2**0
                   CONTENTS, ALLOC, LOAD, DATA
-  2 .bss          00000000  00000000  00000000  000000e0  2**0
+  2 .bss          00000000  00000000  00000000  00000050  2**0
                   ALLOC
-  3 .ARM.attributes 00000014  00000000  00000000  000000e0  2**0
+  3 .ARM.attributes 00000014  00000000  00000000  00000050  2**0
                   CONTENTS, READONLY
 
 Disassembly of section .text:
 
-00000000 <MAIN_START>:
+00000000 <init>:
    0:	2001      	movs	r0, #1
-   2:	2102      	movs	r1, #2
-   4:	2206      	movs	r2, #6
-   6:	46c0      	nop			; (mov r8, r8)
+   2:	2101      	movs	r1, #1
+
+00000004 <start>:
+   4:	3001      	adds	r0, #1
+   6:	e004      	b.n	12 <end>
    8:	46c0      	nop			; (mov r8, r8)
    a:	46c0      	nop			; (mov r8, r8)
-   c:	8088      	strh	r0, [r1, #4]
-   e:	1c54      	adds	r4, r2, #1
-  10:	1d13      	adds	r3, r2, #4
-  12:	1a0c      	subs	r4, r1, r0
-  14:	3005      	adds	r0, #5
-  16:	0052      	lsls	r2, r2, #1
-  18:	0052      	lsls	r2, r2, #1
-  1a:	e011      	b.n	40 <PART_2>
-	...
+   c:	46c0      	nop			; (mov r8, r8)
+   e:	46c0      	nop			; (mov r8, r8)
+  10:	3101      	adds	r1, #1
 
-00000040 <PART_2>:
-  40:	2003      	movs	r0, #3
-  42:	2104      	movs	r1, #4
-  44:	2208      	movs	r2, #8
-  46:	e00b      	b.n	60 <SAUTZERO>
-  48:	46c0      	nop			; (mov r8, r8)
-  4a:	46c0      	nop			; (mov r8, r8)
-  4c:	46c0      	nop			; (mov r8, r8)
-  4e:	46c0      	nop			; (mov r8, r8)
-  50:	1888      	adds	r0, r1, r2
-	...
-
-00000060 <SAUTZERO>:
-  60:	20ff      	movs	r0, #255	; 0xff
-  62:	d10d      	bne.n	80 <SAUTC>
-  64:	46c0      	nop			; (mov r8, r8)
-  66:	46c0      	nop			; (mov r8, r8)
-  68:	46c0      	nop			; (mov r8, r8)
-  6a:	46c0      	nop			; (mov r8, r8)
-  6c:	2105      	movs	r1, #5
-	...
-
-00000080 <SAUTC>:
-  80:	2000      	movs	r0, #0
-  82:	d10d      	bne.n	a0 <NOT_TAKEN>
-  84:	46c0      	nop			; (mov r8, r8)
-  86:	46c0      	nop			; (mov r8, r8)
-  88:	46c0      	nop			; (mov r8, r8)
-  8a:	46c0      	nop			; (mov r8, r8)
-  8c:	2100      	movs	r1, #0
-  8e:	d0b7      	beq.n	0 <MAIN_START>
-	...
-
-000000a0 <NOT_TAKEN>:
-  a0:	e7ae      	b.n	0 <MAIN_START>
-  a2:	46c0      	nop			; (mov r8, r8)
-  a4:	46c0      	nop			; (mov r8, r8)
-  a6:	46c0      	nop			; (mov r8, r8)
-  a8:	46c0      	nop			; (mov r8, r8)
-  aa:	2406      	movs	r4, #6
+00000012 <end>:
+  12:	e7f7      	b.n	4 <start>
+  14:	46c0      	nop			; (mov r8, r8)
+  16:	46c0      	nop			; (mov r8, r8)
+  18:	46c0      	nop			; (mov r8, r8)
+  1a:	46c0      	nop			; (mov r8, r8)
