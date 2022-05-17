@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<project integrity="16988a54eeb5146c9616ba52732b32df30a7b747" source="2.16.8.t" version="1.0">
+<project integrity="ed1fb5a9353565bbd303724d6700865d0e530aab" source="2.16.8.t" version="1.0">
   This file is intended to be loaded by Logisim-evolution (https://github.com/reds-heig/logisim-evolution).
 
   <lib desc="#Wiring" name="0">
@@ -310,11 +310,7 @@ end TCL_Generic;
       <a name="addrWidth" val="15"/>
       <a name="dataWidth" val="16"/>
       <a name="contents">addr/data: 15 16
-2001 2102 2206 46c0 46c0 46c0 8088 1c54
-1d13 1a0c 3005 52 52 e011 18*0 2003
-2104 2208 e00b 4*46c0 1888 7*0 20ff d10d
-4*46c0 2105 9*0 2000 d10d 4*46c0 2100 d0b7
-8*0 e7ae 4*46c0 2406
+2001 2101 3001 e004 4*46c0 3101 e7f7 4*46c0
 </a>
       <a name="label" val="InstrMemory"/>
     </comp>
