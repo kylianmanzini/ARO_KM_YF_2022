@@ -1,59 +1,12 @@
-MAIN_START:
-MOV r0, #1 
-MOV r1, #2
-MOV r2, #6
-NOP
-NOP
-NOP
-STRH r0, [r1, #4]
+init:
+mov r0, #1
+mov r1, #1
 
+start:
+add r0, #1
+b end
+add r1, #1
 
-ADD r4, r2, #1
-ADD r3, r2, #4
-SUB r4, r1, r0
-ADD r0, r0, #5
-LSL r2, r2, #1
-LSL r2, r2, #1
-B PART_2
-
-.org 0x40
-PART_2:
-MOV r0, #3
-MOV r1, #4
-MOV r2, #8
-b SAUTZERO
-NOP
-NOP
-NOP
-NOP
-ADD r0, r1, r2
-
-.org 0x60
-SAUTZERO:	
-MOV r0, #255	
-BNE SAUTC
-NOP
-NOP
-NOP
-NOP
-MOV r1, #5
-
-.org 0x80
-SAUTC:
-MOV r0, #0
-BNE NOT_TAKEN
-NOP
-NOP
-NOP
-NOP
-MOV r1, #0
-BEQ MAIN_START
-
-.org 0xA0
-NOT_TAKEN:
-B MAIN_START
-NOP
-NOP
-NOP
-NOP
-MOV r4, #6
+end:
+bl start
+add r1, #1
